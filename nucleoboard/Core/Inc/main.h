@@ -59,10 +59,20 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define Stepper1PWM_Pin GPIO_PIN_2
+#define Stepper1PWM_GPIO_Port GPIOA
+#define Stepper2PWM_Pin GPIO_PIN_4
+#define Stepper2PWM_GPIO_Port GPIOA
 #define MotoDir_Pin GPIO_PIN_5
 #define MotoDir_GPIO_Port GPIOA
 #define PWMOut_Pin GPIO_PIN_6
 #define PWMOut_GPIO_Port GPIOA
+#define Stepper2DIr_Pin GPIO_PIN_8
+#define Stepper2DIr_GPIO_Port GPIOC
+#define Stepper1Dir_Pin GPIO_PIN_9
+#define Stepper1Dir_GPIO_Port GPIOC
+#define ServoPWM_Pin GPIO_PIN_8
+#define ServoPWM_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
 #define DATA_LENGTH 7
