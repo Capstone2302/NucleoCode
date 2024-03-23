@@ -59,6 +59,10 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define EncoderIn_Pin GPIO_PIN_0
+#define EncoderIn_GPIO_Port GPIOA
+#define EncoderInB_Pin GPIO_PIN_1
+#define EncoderInB_GPIO_Port GPIOA
 #define Stepper1PWM_Pin GPIO_PIN_2
 #define Stepper1PWM_GPIO_Port GPIOA
 #define Stepper2PWM_Pin GPIO_PIN_4
