@@ -21,8 +21,6 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <stdio.h>
-#include <stdlib.h>
 
 /* USER CODE END Includes */
 
@@ -73,6 +71,7 @@ static void MX_TIM15_Init(void);
 /* USER CODE BEGIN 0 */
 int64_t encoder_delta_position;
 encoder_instance enc_instance;
+stepper_motor_instance stepper2;
 /* USER CODE END 0 */
 
 /**
@@ -91,7 +90,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+  init_stepper_motor(&stepper2, Stepper2DIr_GPIO_Port, Stepper2DIr_Pin,TIM14);
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -123,6 +122,7 @@ int main(void)
   {
 	  dutyCycle = 0;
 	  // measure velocity, position
+	  move_stepper_motor(&stepper2, 0);
 	  update_encoder(&enc_instance, &htim2);
 	  encoder_delta_position = enc_instance.delta_position;
 	//  encoder_delta_position = _HAL_TIM_GET_COUNTER(&htim2);
@@ -420,7 +420,7 @@ static void MX_TIM14_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN TIM14_Init 2 */
-
+  HAL_TIM_PWM_Start(&htim14, TIM_CHANNEL_1);
   /* USER CODE END TIM14_Init 2 */
   HAL_TIM_MspPostInit(&htim14);
 
@@ -485,7 +485,7 @@ static void MX_TIM15_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN TIM15_Init 2 */
-
+  HAL_TIM_PWM_Start(&htim15, TIM_CHANNEL_1);
   /* USER CODE END TIM15_Init 2 */
   HAL_TIM_MspPostInit(&htim15);
 
