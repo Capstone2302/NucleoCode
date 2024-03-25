@@ -15,7 +15,8 @@ typedef struct
 {
 	GPIO_TypeDef *dir_port_pin ;
 	uint16_t dir_num_pin ;
-	TIM_TypeDef * tim;
+	GPIO_TypeDef *step_port_pin ;
+	uint16_t step_num_pin ;
 }stepper_motor_instance;
 
 /**
@@ -24,14 +25,14 @@ typedef struct
  * @param GPIO_TypeDef * pointer to the dir pin
  * @param htim Pointer to the relevant timer
  */
-void init_stepper_motor(stepper_motor_instance *stepper_motor, GPIO_TypeDef * dir_port_pin, uint16_t dir_num_pin , TIM_TypeDef * TIM);
+void init_stepper_motor(stepper_motor_instance *stepper_motor, GPIO_TypeDef * dir_port_pin, uint16_t dir_num_pin ,GPIO_TypeDef * step_port_pin, uint16_t step_num_pin );
 
 /**
  * Update the encoder instance with the change in between ticks
  * @param pwm_value The instance of the specific encoder
  * @param htim Pointer to the relevant timer
  */
-void move_stepper_motor(stepper_motor_instance *stepper_motor, int32_t pwm_val);
+void move_stepper_motor(stepper_motor_instance *stepper_motor, int32_t step_val);
 
 /**
  * Reset the stepper_motor_instance to home position
