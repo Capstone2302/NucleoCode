@@ -102,6 +102,7 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
+  uint8_t len_message = 1;
   uint8_t message[DATA_LENGTH] = {'\0'};
   uint8_t RxData[DATA_LENGTH];
   int32_t dutyCycle = 0;
@@ -117,6 +118,7 @@ int main(void)
 	  update_encoder(&enc_instance, &htim2);
 	  encoder_delta_position = enc_instance.delta_position;
 	//  encoder_delta_position = _HAL_TIM_GET_COUNTER(&htim2);
+//	  HAL_UART_Transmit(&huart1, len_message,sizeof(len_message), UART_TIMEOUT);
 	  sprintf(message, "%d\r\n", encoder_delta_position); //add detailed message
 	  HAL_UART_Transmit(&huart1, message, sizeof(message), UART_TIMEOUT);
 	  HAL_UART_Receive_DMA(&huart1, RxData, sizeof(RxData));
@@ -156,6 +158,7 @@ int main(void)
 	  {
 		  TIM3->CCR1 = 0;
 	  }
+	  HAL_Delay(10);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
