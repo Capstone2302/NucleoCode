@@ -80,6 +80,8 @@ void Error_Handler(void);
 #define Stepper1Dir_GPIO_Port GPIOC
 #define ServoPWM_Pin GPIO_PIN_8
 #define ServoPWM_GPIO_Port GPIOA
+#define BallSwitch_Pin GPIO_PIN_12
+#define BallSwitch_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
 #define DATA_LENGTH 7
